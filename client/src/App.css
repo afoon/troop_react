@@ -5,6 +5,44 @@
   align-content: center;
 }
 
+.flex-row{
+  display: flex;
+  flex-direction: row;
+}
+.white{
+  color: white
+}
+.center{
+  justify-content: center;
+}
+.vh70{
+  height:70vh;
+}
+
+.vh50{
+  height: 50vh;
+}
+
+.pink-bg{
+background: #ff5a6a
+}
+
+.white-bg{
+  background: white;
+}
+
+.login-nav{
+  color: #bdbdbd;
+  font-weight:100;
+}
+
+.landing-title{
+  font-size: 3em;
+  font-weight: 700;
+  text-align: center;
+  color: #9E9E9E;
+  width: 50%;
+}
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
