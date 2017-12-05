@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import AppBar from 'material-ui/AppBar';
 import logo from '../../img/logo.ico'
+import axios from 'axios';
 
 class Nav extends Component {
   render() {
