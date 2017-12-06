@@ -1,6 +1,6 @@
 const express = require('express');
 const session = require('express-session');
-const bodyParser = require('body-parser');
+const { json } = require("body-parser");
 const massive = require('massive');
 const cors = require('cors');
 const passport = require('passport');
@@ -11,15 +11,17 @@ const {domain,secret,dbUser, database,client,clSecret, access} = require('./conf
 const connectionString = access;
 const request = require('request');
 
-const port = 5000;
+const port = 3001;
 const app = express();
-
+const router = express.Router();
+app.use("/api", router);
+app.use(json());
 ///////////////////////////////////
 ///////// middleware //////////////
 ///////////////////////////////////
-app.use('/', express.static(__dirname + '../client/public'));
 app.use(cors());
-app.use(bodyParser.json());
+app.use(express.static(__dirname + '/../client/public'));
+
 
 ///////////////////////////////////
 ///////// authentication //////////
@@ -108,7 +110,7 @@ app.get('/login', passport.authenticate('auth0', {scope: 'openid profile'}))
 
 // redirect to home and use the resolve to catch the user
 app.get('/auth/callback',
-    passport.authenticate('auth0', { successRedirect: '/#/main',failureRedirect: '/login' }), (req, res) => {
+    passport.authenticate('auth0', { successRedirect: '/',failureRedirect: '/login' }), (req, res) => {
         res.status(200).json(req.user);
 });
 
@@ -132,7 +134,7 @@ app.get('/',(req,res)=>{
 //////other endpoints//////
 app.get('/auth/logged', (req, res) => {
   if (!req.user) {res.redirect('/login');}
-  if (req.user) {res.redirect('/#/main')}
+  if (req.user) {res.redirect('/')}
 });
 
 

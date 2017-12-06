@@ -55,7 +55,7 @@ background: #ff5a6a
   font-size: 2em;
   text-align: center;
   font-weight: 100;
-  margin-top: -10%;
+  margin-top: -5%;
 }
 .how-it-box{
   width: 300px;
@@ -79,7 +79,7 @@ background: #ff5a6a
   width: 100%;
 }
 .slider-photo{
-  width: 25em;
+  width: 18em;
 }
 .slider-left{
 float: left;
@@ -93,15 +93,24 @@ padding: 0% 0 10% 10% ;
 }
 
 .slider-title{
-  font-size: 4em;
+  font-size: 3em;
   font-weight: 700;
 }
 .slider-text{
-  font-size: 3em;
+  font-size: 2em;
   font-weight: 300;
 }
 .slider-detail{
   font-size: 1.5em;
   font-weight: 100;
   text-align: center;
+  margin-bottom: 0;
+  padding: 0;
+}
+.main-title{
+  font-size: 3em;
+}
+
+.main-trip-title{
+  font-size: 2em;
 }
