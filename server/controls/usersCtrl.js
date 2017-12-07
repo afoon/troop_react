@@ -1,7 +1,7 @@
-const getAll = (req, res, next) => {
+const getAllFriends = (req, res, next) => {
     const db = req.app.get("db");
     db
-      .getAll(req.user.authid)
+      .getAllFriends(req.user.authid)
       .then(response => {
         res.status(200).json(response);
       })
@@ -15,7 +15,7 @@ const getAll = (req, res, next) => {
     const db = req.app.get("db");
     if (req.user) {
       db
-        .getCurrUser([req.user.authid])
+        .getCurrentUser([req.user.authid])
         .then(response => {
           res.status(200).json(response);
         })
@@ -41,6 +41,6 @@ const getAll = (req, res, next) => {
   };
 
 module.exports = {
-    getAll,
+    getAllFriends,
     getCurrUser,
     createUser}

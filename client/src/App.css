@@ -9,7 +9,9 @@
   display: flex;
   flex-direction: column;
 }
-
+.pink{
+  color: #ff5a6a;
+}
 .grey{
   color: #9E9E9E; 
 }
@@ -17,7 +19,7 @@
   color: white
 }
 .center{
-  justify-content: center;
+justify-content: center;
  align-items: center;
 }
 .vh70{
@@ -55,12 +57,12 @@ background: #ff5a6a
   font-size: 2em;
   text-align: center;
   font-weight: 100;
-  margin-top: -5%;
+  margin-top: -0%;
 }
 .how-it-box{
   width: 300px;
   height: 200px;
-  margin: 5% 5%;
+  margin: 0% 5% 5% 0;
   text-align: center;
   font-size: 1.5em;
 
@@ -113,4 +115,38 @@ padding: 0% 0 10% 10% ;
 
 .main-trip-title{
   font-size: 2em;
+}
+
+.card-style{
+  width: 30em;
+  margin: 1em;
+}
+.location-title{
+  font-size: 2em;
+  font-weight: 100;
+}
+
+.createTrip{
+  font-weight: 300;
+  font-size: 2em;
+  text-align: center;
+  padding: 0;
+  margin: 0 0 5% 0 ;
+}
+
+.trip-modal{
+  height: 25vh;
+}
+
+.login-name{
+  color:#9E9E9E;
+  font-weight:100;
+  font-size: 1.25em;
+  margin: 0;
+  width: 100%;
+  align-items: center;
+}
+
+.overflow{
+  flex-wrap: wrap;
 }

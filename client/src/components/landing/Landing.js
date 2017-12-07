@@ -3,7 +3,12 @@ import FontIcon from "material-ui/FontIcon";
 import RaisedButton from "material-ui/RaisedButton";
 import FeatureSlider from "../featuresSlider/FeatureSlider";
 
+
 class Landing extends Component {
+  handleLogin(){
+    window.location.href = 'http://localhost:3001/login';
+  }
+  
   render() {
     return (
       <div>
@@ -17,6 +22,7 @@ class Landing extends Component {
                 label="Get Started"
                 backgroundColor="#ff5a6a"
                 labelColor="white"
+                onClick={ e => {this.handleLogin()}}
               />
             </div>
           </div>

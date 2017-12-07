@@ -110,7 +110,7 @@ app.get('/login', passport.authenticate('auth0', {scope: 'openid profile'}))
 
 // redirect to home and use the resolve to catch the user
 app.get('/auth/callback',
-    passport.authenticate('auth0', { successRedirect: '/',failureRedirect: '/login' }), (req, res) => {
+    passport.authenticate('auth0', { successRedirect: 'http://localhost:3000/main',failureRedirect: '/login' }), (req, res) => {
         res.status(200).json(req.user);
 });
 
@@ -139,10 +139,12 @@ app.get('/auth/logged', (req, res) => {
 
 
 ///////////////////////////////user endpoints//////////////////////////////
-
+app.get('/api/friends', usersCtrl.getAllFriends);
+app.get('/api/user', usersCtrl.getCurrUser);
+app.get('/api/newUser',usersCtrl.createUser );
 ////////////////////////////trip endpoints///////////////////////////////
 //   ******All Trips *******
-
+app.get('/api/userTrips', tripCtrl.getUserTrips);
 
 //   ******Current Trip *******
 

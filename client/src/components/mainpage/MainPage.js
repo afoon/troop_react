@@ -1,23 +1,42 @@
 import React, { Component } from "react";
 import axios from 'axios';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import Location from './CreateATrip/Location/Location.js'
 import Dialog from 'material-ui/Dialog';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import FontIcon from "material-ui/FontIcon";
-import TextField from 'material-ui/TextField';
-import DatePicker from 'material-ui/DatePicker';
+import Dates from './CreateATrip/Dates/Dates';
+import Trip from "../trip/Trip";
+
+
 
 class MainPage extends Component {
+    constructor(props) {
+        super(props);
+    this.state ={
+        createTrip: false,
+        change: true,
+        createPage: 1,
+        name: ''
+    }
+
+   }
+   componentDidMount() {
+    axios.get('/api/user').then( res => {
+        console.log(res.data[0]);
+        const {authid,firstname, lastname, username, photourl} = res.data[0]
+        this.setState({name: firstname})
+    });
+    }
   render() {
     return (
-        <div>
+        <div style={{'margin': '2%'}}>
             <p className='main-title grey'>
-            Welcome, Amina
+            Welcome, {this.state.name}
             </p>
             <p className='main-trip-title grey'>
             My Trips
             </p>
-    <FloatingActionButton label="Modal Dialog"  backgroundColor="#ff5a6a">
+    <FloatingActionButton label="Modal Dialog"  backgroundColor="#ff5a6a" onClick={ e => {this.setState({createTrip: !this.state.createTrip})}}>
     <FontIcon
                   className="material-icons"
                   color="white"
@@ -26,19 +45,30 @@ class MainPage extends Component {
                 add
                 </FontIcon>
     </FloatingActionButton>
-    <Dialog>
-    <p>Create a New Trip</p>
-<TextField hintText='Location'></TextField>
-<DatePicker hintText="Start date" container="inline" />
-<DatePicker hintText="End date" container="inline" />
+    <Dialog open={this.state.createTrip} onRequestClose={ e => {this.setState({createTrip: !this.state.createTrip})}} >
+    <p className='createTrip pink'>Create a New Trip</p>
+    <div className='trip-modal flex-row center'>
+    <FontIcon
+          className="material-icons"
+          color="#ff5a6a"
+          style={{ fontSize: "3em" }}
+          onClick={ e => {this.setState({change: !this.state.change})}}
+        >
+          keyboard_arrow_left
+        </FontIcon>
+{this.state.change && <Location/> }
+{!this.state.change && <Dates/>}
+<FontIcon
+          className="material-icons"
+          color="#ff5a6a"
+          style={{ fontSize: "3em" }}
+          onClick={ e => {this.setState({change: !this.state.change})}}
+        >
+          keyboard_arrow_right
+        </FontIcon>
+</div>
     </Dialog>
-            <div>
-            <Card style={{'width': '300px'}}>
-                <CardMedia  overlay={<CardTitle title="Paris" subtitle="Dec 14 - 18" />} overlayStyle={{'height': '100%'}}>
-                <img src="https://source.unsplash.com/1600x900/?paris" alt=''/>
-                </CardMedia>
-            </Card>
-            </div>
+<Trip/>
         </div>
     )
   }
